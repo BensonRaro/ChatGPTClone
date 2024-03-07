@@ -8,28 +8,25 @@ datasource db {
 }
 
 
-model User {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  email   String   @unique
-  name    String?
-  chats   Chats[]
-  message   message[]
+
+model conversation {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  userMessage      String
+  chatgptResponse  String
+  GeneratedImage   String
+  userId           String    
+  chats            chats     @relation(fields: [chatId], references: [id])
+  chatId           String    @db.ObjectId
+
+  createdAt        DateTime  @default(now())
 }
 
-model message {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  userMessage String
-  chatgptResponse String
-  user   User      @relation(fields: [userId], references: [id])
-  userId String    @db.ObjectId
-  chats   Chats      @relation(fields: [chatId], references: [id])
-  chatId String    @db.ObjectId
-}
+model chats {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  title              String
+  userId             String   
 
-model Chats {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  user   User      @relation(fields: [userId], references: [id])
-  userId String    @db.ObjectId
-  message   message[]
+  conversation       conversation[]
+
+  createdAt          DateTime  @default(now())
 }

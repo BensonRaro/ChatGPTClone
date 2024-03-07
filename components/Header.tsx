@@ -13,7 +13,7 @@ const Header = () => {
     <>
       <header
         className={cn(
-          "space-x-2 items-center p-2 fixed dark:bg-[#212121] bg-[#FFFFFF] w-full",
+          "space-x-2 items-center pt-1 fixed dark:bg-[#212121] bg-[#FFFFFF] w-full",
           !collapsed && "md:ml-[280px]"
         )}
       >
