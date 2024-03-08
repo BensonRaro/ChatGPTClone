@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import TypingEffect from "./TypingEffect";
 import { useTypeEffect } from "@/store/useTypeEffect";
+import Typography from "./Typography";
 
 interface conversationProps {
   id: string;
@@ -51,11 +52,11 @@ const Conversation = ({
               />
               ChatGPT
             </div>
-            <div className="ml-12 mt-2">
+            <div className="ml-12 mt-2 text-lg tracking-wide">
               {conversationId === conv.id ? (
                 <TypingEffect text={conv.chatgptResponse} />
               ) : (
-                <>{conv.chatgptResponse}</>
+                <Typography text={conv.chatgptResponse} />
               )}
             </div>
           </>

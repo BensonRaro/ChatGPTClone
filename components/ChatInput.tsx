@@ -7,6 +7,7 @@ import { NewConversation } from "@/actions/NewConversation";
 import { CreateChat } from "@/actions/CreateChat";
 import { useTypeEffect } from "@/store/useTypeEffect";
 import { ChatGPT_API } from "@/actions/ChatGPT_API";
+import { toast } from "sonner";
 
 const ChatInput = () => {
   const params = useParams<{ chatId: string }>();
@@ -19,7 +20,7 @@ const ChatInput = () => {
   const Send = async () => {
     setLoading(true);
     if (!content) return;
-
+    const notification = toast.loading("ChatGPT is thinking...");
     const results = await ChatGPT_API(content);
     try {
       if (!params.chatId) {
@@ -42,7 +43,9 @@ const ChatInput = () => {
       }
       setContent("");
       setLoading(false);
+      toast.success("Results Are ready", { id: notification });
     } catch (error) {
+      toast.error("Error occured", { id: notification });
       console.log(error);
       setLoading(false);
     }
