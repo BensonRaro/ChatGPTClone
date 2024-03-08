@@ -8,7 +8,7 @@ export const ChatGPT_API = async (content: string) => {
     url: "https://chatgpt-42.p.rapidapi.com/matag2",
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "df20e27d24mshf0bccc7e5ef1528p1edc77jsn1c365cb1c9f4",
+      "X-RapidAPI-Key": "f13e9f8f53mshf605e39e3694c1dp14cbd3jsncf42ad6229be",
       "X-RapidAPI-Host": "chatgpt-42.p.rapidapi.com",
     },
     data: {

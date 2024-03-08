@@ -41,7 +41,7 @@ const Typography: React.FC<TypographyProps> = ({ text }) => {
     return content;
   };
 
-  return <div>{renderContent()}</div>;
+  return <>{renderContent()}</>;
 };
 
 export default Typography;

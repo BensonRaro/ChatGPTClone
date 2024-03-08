@@ -3,6 +3,7 @@
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 
 import { db } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 export const CreateChat = async (title: string) => {
   const user = await currentUser();
@@ -17,6 +18,6 @@ export const CreateChat = async (title: string) => {
       title: title,
     },
   });
-
+  revalidatePath(`/chats/`);
   return chat;
 };
